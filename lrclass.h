@@ -1,4 +1,5 @@
 #include "math.h"
+#pragma once
 
 class lrclass {
 protected:
@@ -21,6 +22,7 @@ public:
         m *= 1000;
         man = int(m + 0.5);
     }
+
     lrclass(int m, int e){
         double k = (double) m;
         while (fabs(k) >= 200){
@@ -41,3 +43,4 @@ public:
     friend lrclass operator -(lrclass, lrclass);
     friend lrclass operator *(lrclass, lrclass);
 };
+;

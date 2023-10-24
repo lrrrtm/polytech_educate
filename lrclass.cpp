@@ -13,12 +13,13 @@ void lrclass::normal(lrclass& a2) {
     }
 }
 
-void lrclass::print(void) {
-    printf("%d, %d %f\n", man, exp, (man / 1000.0) * pow(2.0, exp));
+void lrclass::print() {
+    printf("mantissa: %d, exponent: %d fact: %f\n", man, exp, (man / 1000.0) * pow(2.0, exp));
 }
 
 lrclass operator + (lrclass a1, lrclass a2){
     a1.normal(a2);
+    printf("lol keeeeeeek");
     return lrclass((a1.man + a2.man), a1.exp);
 }
 
