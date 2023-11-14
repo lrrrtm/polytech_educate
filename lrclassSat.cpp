@@ -34,3 +34,9 @@ lrclassSat operator * (lrclassSat a1, lrclassSat a2) {
     lrclass c = a * b;
     return lrclassSat(c, f);
 }
+
+int lrclassSat::operator != (lrclassSat& a) {
+    if (flag != a.flag) return 1;
+    if (lrclass(a) != (*this)) return 1;
+    return 0;
+}

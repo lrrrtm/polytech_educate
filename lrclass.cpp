@@ -32,3 +32,9 @@ lrclass operator * (lrclass a1, lrclass a2){
     a1.normal(a2);
     return lrclass((a1.man * a2.man) / 1000, a1.exp + a2.exp);
 }
+
+int lrclass::operator != (lrclass& a){
+    if (man != a.man) return 1;
+    if (exp != a.exp) return 1;
+    return 0;
+}
