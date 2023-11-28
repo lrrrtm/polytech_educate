@@ -33,9 +33,13 @@ public:
     }
 
     void print();
+    int operator!=(lrclassSat& a);
     friend lrclassSat operator +(lrclassSat, lrclassSat);
     friend lrclassSat operator -(lrclassSat, lrclassSat);
     friend lrclassSat operator *(lrclassSat, lrclassSat);
+
+    lrclassSat();
+
 };
 
 

@@ -39,6 +39,7 @@ public:
 
     void normal(lrclass&);
     void print();
+    int operator!=(lrclass& a);
     friend lrclass operator +(lrclass, lrclass);
     friend lrclass operator -(lrclass, lrclass);
     friend lrclass operator *(lrclass, lrclass);

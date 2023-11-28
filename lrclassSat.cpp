@@ -37,6 +37,6 @@ lrclassSat operator * (lrclassSat a1, lrclassSat a2) {
 
 int lrclassSat::operator != (lrclassSat& a) {
     if (flag != a.flag) return 1;
-    if (lrclass(a) != (*this)) return 1;
+    if (lrclassSat(a) != (*this)) return 1;
     return 0;
 }

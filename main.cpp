@@ -2,8 +2,8 @@
 #include "iostream"
 
 int main(){
-    lrclassSat s(128.4);
-    lrclassSat d(23.4);
+    lrclassSat s(223.4);
+    lrclassSat d(186.4);
     lrclassSat res = s + d;
 
     printf("Input data\n");
