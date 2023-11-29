@@ -1,19 +1,22 @@
 #include "stdio.h"
 #include "lrclassSat.h"
 
+// вывод числа и указателем насыщаемости *
 void lrclassSat::print() {
     lrclass::print();
-    if (flag == 1){
+    if (flag == 1) {
         printf("*\n");
     }
 }
 
-lrclassSat operator + (lrclassSat a1, lrclassSat a2) {
+// сложение
+lrclassSat operator+(lrclassSat a1, lrclassSat a2) {
     return lrclassSat(lrclass(a1) + a2, a1.flag == 1 || a2.flag == 1);
 
 }
 
-lrclassSat operator - (lrclassSat a1, lrclassSat a2) {
+// вычитание
+lrclassSat operator-(lrclassSat a1, lrclassSat a2) {
     int f = 0;
     if (a1.flag == 1 || a2.flag == 1) {
         f = 1;
@@ -24,7 +27,8 @@ lrclassSat operator - (lrclassSat a1, lrclassSat a2) {
     return lrclassSat(c, f);
 }
 
-lrclassSat operator * (lrclassSat a1, lrclassSat a2) {
+// умножение
+lrclassSat operator*(lrclassSat a1, lrclassSat a2) {
     int f = 0;
     if (a1.flag == 1 || a2.flag == 1) {
         f = 1;
@@ -35,7 +39,8 @@ lrclassSat operator * (lrclassSat a1, lrclassSat a2) {
     return lrclassSat(c, f);
 }
 
-int lrclassSat::operator != (lrclassSat& a) {
+// сравнение для векторов
+int lrclassSat::operator!=(lrclassSat &a) {
     if (flag != a.flag) return 1;
     if (lrclassSat(a) != (*this)) return 1;
     return 0;

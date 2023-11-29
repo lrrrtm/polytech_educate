@@ -1,4 +1,5 @@
 #include "math.h"
+
 #pragma once
 
 class lrclass {
@@ -7,14 +8,14 @@ protected:
     int exp;
 
 public:
-    lrclass(double m){
+    lrclass(double m) {
         exp = 0;
-        while (fabs(m) >= 0.2){
+        while (fabs(m) >= 0.2) {
             m /= 2;
             exp += 1;
         }
 
-        while (fabs(m) <= 0.1){
+        while (fabs(m) <= 0.1) {
             m *= 2;
             exp -= 1;
         }
@@ -23,13 +24,13 @@ public:
         man = int(m + 0.5);
     }
 
-    lrclass(int m, int e){
+    lrclass(int m, int e) {
         double k = (double) m;
-        while (fabs(k) >= 200){
+        while (fabs(k) >= 200) {
             k /= 2;
             e += 1;
         }
-        while (fabs(k) < 100){
+        while (fabs(k) < 100) {
             k *= 2;
             e -= 1;
         }
@@ -37,11 +38,15 @@ public:
         exp = e;
     }
 
-    void normal(lrclass&);
+    void normal(lrclass &);
+
     void print();
-    int operator!=(lrclass& a);
-    friend lrclass operator +(lrclass, lrclass);
-    friend lrclass operator -(lrclass, lrclass);
-    friend lrclass operator *(lrclass, lrclass);
-};
-;
+
+    int operator!=(lrclass &a);
+
+    friend lrclass operator+(lrclass, lrclass);
+
+    friend lrclass operator-(lrclass, lrclass);
+
+    friend lrclass operator*(lrclass, lrclass);
+};;

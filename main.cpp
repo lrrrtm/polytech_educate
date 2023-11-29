@@ -1,7 +1,7 @@
 #include "lrclassSat.h"
 #include "iostream"
 
-int main(){
+int main() {
     lrclassSat s(223.4);
     lrclassSat d(186.4);
     lrclassSat res = s + d;

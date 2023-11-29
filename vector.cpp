@@ -3,24 +3,28 @@
 #include "iostream"
 #include "lrclassSat.h"
 
+// выделяем память для масссива объектов lrclassSat и устанавливаем размер вектора
 vector::vector(int s) {
-    if (s <= 0) error("1");
+    if (s <= 0) error("zero_arr_length"); // длина меньше 0
     v = new lrclassSat(s);
-    if (v == nullptr) error("2");
+    if (v == nullptr) error("vector_memory"); // проверка успешности выделения памяти
     sz = s;
 }
 
+//дестркутор для освобождения памяти, выделенной под вектор
 vector::~vector() {
     delete[]v;
 }
 
-vector::vector(const vector & a): vector(a.size()) {
-    for (int i = 0; i < size(); i++){
+// создание нового вектора того же размера и копирование в него элементов
+vector::vector(const vector &a) : vector(a.size()) {
+    for (int i = 0; i < size(); i++) {
         elem(i) = a.elem(i);
     }
 }
 
-vector& vector::operator=(vector & a) {
+// оператор присваивания векторов
+vector &vector::operator=(vector &a) {
     int s = a.size();
     if (size() != a.size()) {
         delete[]v;
@@ -32,9 +36,10 @@ vector& vector::operator=(vector & a) {
     }
 }
 
-vector& vector::operator+(vector & a) {
+// оператор сложения векторов
+vector &vector::operator+(vector &a) {
     int s = size();
-    if (s != a.size()) error("-2");
+    if (s != a.size()) error("diff_dimesion_add");
     vector sum(s);
     for (int i = 0; i < s; i++) {
         sum.elem(i) = elem(i) + a.elem(i);
@@ -42,14 +47,10 @@ vector& vector::operator+(vector & a) {
     return sum;
 }
 
-lrclassSat& vector::operator[](int i) {
-    if (i < 0 || i >= sz) error("3");
-    return v[i];
-}
-
-vector operator-(vector& a, vector& b){
+// оператор вычитания векторов
+vector operator-(vector &a, vector &b) {
     int s = a.size();
-    if (s != b.size()) error("-3");
+    if (s != b.size()) error("diff_dimesion_subdiv");
     vector sub(s);
     for (int i = 0; i < s; i++) {
         sub.elem(i) = a.elem(i) - b.elem(i);
@@ -57,8 +58,14 @@ vector operator-(vector& a, vector& b){
     return sub;
 }
 
+// оператор индекации (возвращает ссылку на элемент вектора с заданным индексом
+lrclassSat &vector::operator[](int i) {
+    if (i < 0 || i >= sz) error("3");
+    return v[i];
+}
 
-int vector::operator==(vector & a) {
+// оператор поэлементного сравнения вектора (0 если отличается размерность или векторы не равны)
+int vector::operator==(vector &a) {
     if (size() != a.size()) return 0;
 
     for (int i = 0; i < sz; i++) {
@@ -67,8 +74,8 @@ int vector::operator==(vector & a) {
     return 1;
 }
 
-
-void error(const char* p) {
+// функция вывода ошибки в консоль
+void error(const char *p) {
     printf(p);
     exit(1);
 }
